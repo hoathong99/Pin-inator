@@ -1,5 +1,6 @@
 package com.example.Pin_inator.Models.Core;
 
+import com.example.Pin_inator.Models.Core.User.User;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -26,13 +27,17 @@ public class Article {
     private long id;
     @Getter
     @Setter
-    private String ownerId;
+    @ManyToOne
+    @JoinColumn(name = "owner_id", nullable = false)
+    private User owner;
     @Getter
     @Setter
-    private String header;
+    private String title;
     @Getter
     @Setter
-    private String content;
+    @OneToMany(mappedBy = "article", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OrderBy("position ASC") // Ensures correct order of blocks
+    private List<ArticleContentBlock> blocks;
     @OneToMany(mappedBy = "article", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
     @Getter
     @Setter

@@ -2,6 +2,7 @@ package com.example.Pin_inator.Models.Core;
 
 import jakarta.persistence.*;
 import lombok.*;
+import com.example.Pin_inator.Models.Core.Enum.PinType;
 @Entity
 @Table
 @AllArgsConstructor
@@ -34,7 +35,8 @@ public class Pin {
     private String content;
     @Getter
     @Setter
-    private String type;
+    @Enumerated(EnumType.STRING)
+    private PinType type;
     @ManyToOne
     @JoinColumn(name = "article_id", nullable = false)
     private Article article;

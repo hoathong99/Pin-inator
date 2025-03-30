@@ -1,7 +1,7 @@
 package com.example.Pin_inator.Models.Core;
 
 public class Enum {
-    enum PinType {
+    public enum PinType {
         Food,
         PointOfInterest,
         ViewPoint,
@@ -9,5 +9,9 @@ public class Enum {
         Custom,
         Stay,
         Cautious
+    }
+    public enum BlockType {
+        TEXT,
+        IMAGE
     }
 }

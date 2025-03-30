@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
+import java.util.UUID;
 
 @RestController
 @RequestMapping(path = "api/v1/article")
@@ -20,8 +21,8 @@ public class ArticalController {
     }
 
     @GetMapping
-    public List<Article> GetArticle(){
-
-        return articleService.GetArticle();
+    public List<Article> GetArticlesOfOwner(String ownerId){
+        UUID Id = UUID.fromString(ownerId);
+        return articleService.GetArticlesOfOwner(Id);
     }
 }
